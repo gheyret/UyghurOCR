@@ -14,7 +14,6 @@ using OpenCvSharp.Extensions;
 using Tesseract;
 using System.Drawing;
 using System.Threading.Tasks;
-using Codeplex.Data;
 
 namespace UyghurOCR
 {
@@ -31,11 +30,6 @@ namespace UyghurOCR
 
 		private  Microsoft.Win32.RegistryKey     gRegKey= Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Kenjsoft\KenjiResim");
 		
-		class FooBar
-		{
-			public string foo { get; set; }
-			public int bar { get; set; }
-		}
 		
 		public MainForm()
 		{
@@ -57,44 +51,6 @@ namespace UyghurOCR
 		}
 		
 		
-		void TestDynamicJson(){
-			
-			var json = DynamicJson.Parse(@"{""foo"":""json"", ""bar"":100, ""nest"":{ ""foobar"":true } }");
-			
-			System.Diagnostics.Debug.WriteLine((string)json.foo);
-			
-			
-			var obj = new
-			{
-				Name = "Foo",
-				Age = 30,
-				Address = new
-				{
-					Country = "Japan",
-					City = "Tokyo"
-				},
-				Like = new[] { "Microsoft", "Xbox" }
-			};
-			
-			var foobar = new FooBar[] {
-				new FooBar { foo = "fooooo!", bar = 1000 },
-				new FooBar { foo = "orz", bar = 10 }
-			};
-			
-			
-			var jsonStringFromObj = DynamicJson.Serialize(obj);
-			System.Diagnostics.Debug.WriteLine(jsonStringFromObj);
-			
-			string kitablar = File.ReadAllText("kitablar.json",System.Text.Encoding.UTF8);
-			var kitablarjson = DynamicJson.Parse(kitablar);
-			foreach (var kitab in kitablarjson)
-			{
-				var vv = kitab.Value;
-				System.Diagnostics.Debug.WriteLine((String)vv["APTOR"]);
-				System.Diagnostics.Debug.WriteLine((String)vv.ISIMI);
-				System.Diagnostics.Debug.WriteLine((String)vv.pdfurl);
-			}
-		}
 		
 		void RightClick(int x, int y){
 			Vec3b color;
@@ -216,11 +172,9 @@ namespace UyghurOCR
 		
 		
 		string DoOCR(Pix pix){
-			//Pix newpix = pix.Deskew();
 			Page pg = gOcr.Process(pix);
 			String buf = pg.GetText();
 			pix.Dispose();
-			//newpix.Dispose();
 			pg.Dispose();
 			return buf.Replace("ی","ي").Replace("ه","ە").Replace("\n",Environment.NewLine);
 		}
@@ -365,6 +319,28 @@ namespace UyghurOCR
 			buttonRight.Enabled = true;
 			buttonNext.Enabled = true;
 			button2.Enabled = true;
+		}
+		
+		void MainFormDragEnter(object sender, DragEventArgs e)
+		{
+			String[] file=(String[])e.Data.GetData(DataFormats.FileDrop);
+			String  baseName = Path.GetFileName(file[0]);
+			if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp"))
+			{
+				e.Effect= DragDropEffects.All;
+			}
+
+		}
+		
+		void MainFormDragDrop(object sender, DragEventArgs e)
+		{
+			String[] file=(String[])e.Data.GetData(DataFormats.FileDrop);
+			string 	imgFile=file[0];
+			Mat src;
+			byte[] bmp = File.ReadAllBytes(imgFile);
+			src = Mat.FromImageData(bmp,ImreadModes.Unchanged);
+			ramka.Image=src;
+			
 		}
 	}
 }
