@@ -43,10 +43,10 @@ namespace UyghurOCR
 			
 			gOcr= new TesseractEngine(@".\tessdata","uig",EngineMode.LstmOnly);
 			System.Diagnostics.Debug.WriteLine(gOcr.Version);
-			gOcr.DefaultPageSegMode = PageSegMode.Auto;
 			System.Reflection.Assembly asm =System.Reflection.Assembly.GetExecutingAssembly();
 			this.Icon=new Icon(asm.GetManifestResourceStream("UyghurOCR.icon.ico"));
 			
+			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";
 			//TestDynamicJson();
 		}
 		
@@ -172,6 +172,12 @@ namespace UyghurOCR
 		
 		
 		string DoOCR(Pix pix){
+			if(rdAuto.Checked){
+				gOcr.DefaultPageSegMode = PageSegMode.Auto;
+			}
+			else if(rdSingle.Checked){
+				gOcr.DefaultPageSegMode = PageSegMode.SingleBlock;
+			}
 			Page pg = gOcr.Process(pix);
 			String buf = pg.GetText();
 			pix.Dispose();
@@ -273,7 +279,6 @@ namespace UyghurOCR
 			}
 			button1.Enabled=true;
 			this.Cursor=System.Windows.Forms.Cursors.Arrow;
-			
 		}
 		
 		private  bool ExtractImage(String pdfFile, string imgPath)
@@ -329,7 +334,6 @@ namespace UyghurOCR
 			{
 				e.Effect= DragDropEffects.All;
 			}
-
 		}
 		
 		void MainFormDragDrop(object sender, DragEventArgs e)

@@ -45,11 +45,14 @@ namespace UyghurOCR
 			this.button1 = new System.Windows.Forms.Button();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.rdSingle = new System.Windows.Forms.RadioButton();
+			this.rdAuto = new System.Windows.Forms.RadioButton();
 			this.button2 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// ramka
@@ -154,12 +157,35 @@ namespace UyghurOCR
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 			| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.rdSingle);
+			this.groupBox1.Controls.Add(this.rdAuto);
 			this.groupBox1.Location = new System.Drawing.Point(738, 36);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(153, 372);
+			this.groupBox1.Size = new System.Drawing.Size(153, 117);
 			this.groupBox1.TabIndex = 45;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Segmentation";
+			this.groupBox1.Text = "Segmentation mode";
+			// 
+			// rdSingle
+			// 
+			this.rdSingle.Location = new System.Drawing.Point(6, 58);
+			this.rdSingle.Name = "rdSingle";
+			this.rdSingle.Size = new System.Drawing.Size(141, 24);
+			this.rdSingle.TabIndex = 1;
+			this.rdSingle.TabStop = true;
+			this.rdSingle.Text = "Single block";
+			this.rdSingle.UseVisualStyleBackColor = true;
+			// 
+			// rdAuto
+			// 
+			this.rdAuto.Checked = true;
+			this.rdAuto.Location = new System.Drawing.Point(6, 28);
+			this.rdAuto.Name = "rdAuto";
+			this.rdAuto.Size = new System.Drawing.Size(141, 24);
+			this.rdAuto.TabIndex = 0;
+			this.rdAuto.TabStop = true;
+			this.rdAuto.Text = "Automatic";
+			this.rdAuto.UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
@@ -197,6 +223,7 @@ namespace UyghurOCR
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -210,4 +237,7 @@ namespace UyghurOCR
 		private System.Windows.Forms.ProgressBar progressBar1;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button button2;
-	}}
+		private System.Windows.Forms.RadioButton rdSingle;
+		private System.Windows.Forms.RadioButton rdAuto;
+	}
+}
