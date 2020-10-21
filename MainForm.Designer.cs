@@ -48,11 +48,14 @@ namespace UyghurOCR
 			this.rdSingle = new System.Windows.Forms.RadioButton();
 			this.rdAuto = new System.Windows.Forms.RadioButton();
 			this.button2 = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.chkLang = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// ramka
@@ -159,7 +162,7 @@ namespace UyghurOCR
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.rdSingle);
 			this.groupBox1.Controls.Add(this.rdAuto);
-			this.groupBox1.Location = new System.Drawing.Point(738, 36);
+			this.groupBox1.Location = new System.Drawing.Point(738, 89);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(153, 117);
 			this.groupBox1.TabIndex = 45;
@@ -198,12 +201,35 @@ namespace UyghurOCR
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
+			// groupBox2
+			// 
+			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox2.Controls.Add(this.chkLang);
+			this.groupBox2.Location = new System.Drawing.Point(738, 30);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(153, 51);
+			this.groupBox2.TabIndex = 47;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Language";
+			// 
+			// chkLang
+			// 
+			this.chkLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.chkLang.FormattingEnabled = true;
+			this.chkLang.Location = new System.Drawing.Point(6, 18);
+			this.chkLang.Name = "chkLang";
+			this.chkLang.Size = new System.Drawing.Size(137, 20);
+			this.chkLang.TabIndex = 0;
+			this.chkLang.SelectedIndexChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(893, 542);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.progressBar1);
@@ -224,6 +250,7 @@ namespace UyghurOCR
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
+			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -239,5 +266,7 @@ namespace UyghurOCR
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.RadioButton rdSingle;
 		private System.Windows.Forms.RadioButton rdAuto;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.ComboBox chkLang;
 	}
 }

@@ -41,12 +41,9 @@ namespace UyghurOCR
 			ramka.Selected = SelectionChanged;
 			ramka.RightMouseClick = RightClick;
 			
-			gOcr= new TesseractEngine(@".\tessdata","uig",EngineMode.LstmOnly);
-			System.Diagnostics.Debug.WriteLine(gOcr.Version);
 			System.Reflection.Assembly asm =System.Reflection.Assembly.GetExecutingAssembly();
 			this.Icon=new Icon(asm.GetManifestResourceStream("UyghurOCR.icon.ico"));
 			
-			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";
 			//TestDynamicJson();
 		}
 		
@@ -242,6 +239,7 @@ namespace UyghurOCR
 				listAllImg();
 			}
 		}
+		
 		void MainFormShown(object sender, EventArgs e)
 		{
 			String lastdir =null;
@@ -255,6 +253,23 @@ namespace UyghurOCR
 			else{
 				label1.Text = lastdir;
 				listAllImg();
+			}
+			
+			string[] langs = Directory.GetFiles(@".\tessdata","*.traineddata");
+			string   lang;
+			if(langs.Length>0){
+				for(int i=0;i<langs.Length;i++){
+					lang = langs[i].Replace(@".\tessdata\","").Replace(".traineddata","");
+					chkLang.Items.Add(lang);
+				}
+				int ind = chkLang.Items.IndexOf("ukij");
+				if(ind==-1){
+					ind = 0;
+				}
+				chkLang.SelectedIndex = ind;
+			}
+			else{
+				MessageBox.Show("No Language Data", "Uyghur OCR",MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 		
@@ -329,7 +344,7 @@ namespace UyghurOCR
 		void MainFormDragEnter(object sender, DragEventArgs e)
 		{
 			String[] file=(String[])e.Data.GetData(DataFormats.FileDrop);
-			String  baseName = Path.GetFileName(file[0]);
+			String  baseName = Path.GetFileName(file[0]).ToLower();
 			if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp"))
 			{
 				e.Effect= DragDropEffects.All;
@@ -345,6 +360,13 @@ namespace UyghurOCR
 			src = Mat.FromImageData(bmp,ImreadModes.Unchanged);
 			ramka.Image=src;
 			
+		}
+		
+		void ChkLangSelectedIndexChanged(object sender, EventArgs e)
+		{
+			string lang = (string)chkLang.SelectedItem;
+			gOcr= new TesseractEngine(@".\tessdata",lang,EngineMode.LstmOnly);
+			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";			
 		}
 	}
 }
