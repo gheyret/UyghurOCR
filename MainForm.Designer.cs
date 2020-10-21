@@ -158,8 +158,7 @@ namespace UyghurOCR
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.rdSingle);
 			this.groupBox1.Controls.Add(this.rdAuto);
 			this.groupBox1.Location = new System.Drawing.Point(738, 89);
@@ -203,15 +202,14 @@ namespace UyghurOCR
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox2.Controls.Add(this.chkLang);
 			this.groupBox2.Location = new System.Drawing.Point(738, 30);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(153, 51);
 			this.groupBox2.TabIndex = 47;
 			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Language";
+			this.groupBox2.Text = "Model";
 			// 
 			// chkLang
 			// 
