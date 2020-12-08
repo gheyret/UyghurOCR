@@ -9,8 +9,6 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
 using Tesseract;
 using System.Drawing;
 using System.Threading.Tasks;
@@ -23,13 +21,9 @@ namespace UyghurOCR
 	public partial class MainForm : Form
 	{
 		Random      grand = new System.Random();
-		Double item0, item1, item2;
-		long   itemcnt;
 		TesseractEngine         gOcr;
 		OCRText  gOcrTxtForm = null;
-
 		private  Microsoft.Win32.RegistryKey     gRegKey= Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Kenjsoft\KenjiResim");
-		
 		
 		public MainForm()
 		{
@@ -37,95 +31,19 @@ namespace UyghurOCR
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
-			ramka.MousePoint = this.MousePoint;
-			ramka.Selected = SelectionChanged;
-			ramka.RightMouseClick = RightClick;
-			
 			System.Reflection.Assembly asm =System.Reflection.Assembly.GetExecutingAssembly();
 			this.Icon=new Icon(asm.GetManifestResourceStream("UyghurOCR.icon.ico"));
 			
-			//TestDynamicJson();
 		}
 		
-		
-		
-		void RightClick(int x, int y){
-			Vec3b color;
-			Mat src = ramka.Image;
-			color = src.Get<Vec3b>(y, x);
-			String rgb =String.Format("RGB:({0},{1},{2})",color.Item2,color.Item1,color.Item0);
-			
-			item0 = color.Item0;
-			item1 = color.Item1;
-			item2 = color.Item2;
-			
-		}
-		
-		
-		unsafe void OpVec3b(Vec3b *bt, int *pos){
-			byte r,g,b;
-			r = (*bt).Item2;
-			g = (*bt).Item1;
-			b = (*bt).Item0;
-			
-			//if ( r> 80 && g > 80 && b > 80)
-			{
-				itemcnt++;
-				item0 +=r;
-				item1 +=g;
-				item2 +=b;
-			}
-		}
-		
-		
-		unsafe  public void SelectionChanged(Mat roi){
-			System.Diagnostics.Debug.WriteLine("Tallandi");
-			itemcnt = 0;
-			item0 = 0;
-			item1 = 0;
-			item2 = 0;
-			//roi.ForEachAsVec3b(OpVec3b);
-			Vec3b color;
-			for( int y = 0; y< roi.Height;y++){
-				for(int x =0; x< roi.Width; x++){
-					color = roi.Get<Vec3b>(y, x);
-					if(color.Item0>80 && color.Item1 > 80 && color.Item2>80){
-						itemcnt ++;
-						item0 += color.Item0;
-						item1 += color.Item1;
-						item2 += color.Item2;
-					}
-				}
-			}
-			if(itemcnt == 0)
-				return;
-			
-			item0 = item0/itemcnt;
-			item1 = item1/itemcnt;
-			item2 = item2/itemcnt;
-			String rgb =String.Format("RGB:({0:0},{1:0},{2:0})",item2,item1,item0);
-			
-			//test();
-			
-		}
 		
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
-			Cv2.DestroyAllWindows();
 			if(gRegKey!=null){
 				gRegKey.SetValue("LAST",label1.Text);
 			}
 		}
 		
-		
-		void MousePoint(int x, int y){
-			Vec3b color;
-			Mat src = ramka.Image;
-			color = src.Get<Vec3b>(y, x);
-			String rgb =String.Format("RGB:({0},{1},{2})",color.Item2,color.Item1,color.Item0);
-			//label3.Text = rgb;
-			
-		}
 		
 		async void ButtonRight(object sender, EventArgs e)
 		{
@@ -135,18 +53,16 @@ namespace UyghurOCR
 			
 			Bitmap roibmp;
 			Pix    roipix;
-			OpenCvSharp.Rect roi = ramka.getRoi();
-			Mat    src;
+			Rectangle roi = ramka.getRoi();
 			Cursor=Cursors.WaitCursor;
 			if(roi.X != -1)
 			{
-				src = ramka.Image[roi];
+				roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
 			}
 			else{
-				src = ramka.Image;
+				roibmp = ramka.Image;
 			}
 			
-			roibmp = src.ToBitmap();
 			roipix = PixConverter.ToPix(roibmp);
 
 			Task<string> ocr = Task.Run<string>(() =>{
@@ -193,7 +109,7 @@ namespace UyghurOCR
 			String[] images = Directory.GetFiles(label1.Text,"*.*");
 			foreach(string afile in images){
 				baseName = Path.GetFileName(afile).ToLower();
-				if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp")){
+				if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp")||baseName.EndsWith(".jfif")){
 					listBox1.Items.Add(Path.GetFileName(afile));
 				}
 			}
@@ -204,11 +120,9 @@ namespace UyghurOCR
 		}
 		
 		void ShowImg(){
-			Mat src;
 			String path = Path.Combine(label1.Text, (string)listBox1.SelectedItem);
-			byte[] bmp = File.ReadAllBytes(path);
-			src = Mat.FromImageData(bmp,ImreadModes.Unchanged);
-			ramka.Image=src;
+			Bitmap bimg = new Bitmap(path);
+			ramka.Image=bimg;
 		}
 
 		void ButtonNextClick(object sender, EventArgs e)
@@ -312,30 +226,26 @@ namespace UyghurOCR
 		{
 			Bitmap roibmp;
 			Pix    roipix;
-			Mat    src;
 			buttonRight.Enabled = false;
 			buttonNext.Enabled = false;
 			button2.Enabled = false;
-			OpenCvSharp.Rect roi = ramka.getRoi();
+			Rectangle roi = ramka.getRoi();
 			Cursor=Cursors.WaitCursor;
 			if(roi.X != -1)
 			{
-				src = ramka.Image[roi];
+				roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
 			}
 			else{
-				src = ramka.Image;
+				roibmp = ramka.Image;
 			}
-			roibmp = src.ToBitmap();
+
 			roipix = PixConverter.ToPix(roibmp);
 			Pix roipix1 = roipix.Deskew();
-			
 			Bitmap newbm = PixConverter.ToBitmap(roipix1);
-			Mat newmat = BitmapConverter.ToMat(newbm);
-			ramka.Image = newmat;
+			ramka.Image = newbm;
 			Cursor=Cursors.Default;
-			src.Dispose();
-			newbm.Dispose();
 			roipix.Dispose();
+			roibmp.Dispose();
 			buttonRight.Enabled = true;
 			buttonNext.Enabled = true;
 			button2.Enabled = true;
@@ -345,7 +255,7 @@ namespace UyghurOCR
 		{
 			String[] file=(String[])e.Data.GetData(DataFormats.FileDrop);
 			String  baseName = Path.GetFileName(file[0]).ToLower();
-			if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp"))
+			if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp")||baseName.EndsWith(".jfif"))
 			{
 				e.Effect= DragDropEffects.All;
 			}
@@ -355,10 +265,8 @@ namespace UyghurOCR
 		{
 			String[] file=(String[])e.Data.GetData(DataFormats.FileDrop);
 			string 	imgFile=file[0];
-			Mat src;
-			byte[] bmp = File.ReadAllBytes(imgFile);
-			src = Mat.FromImageData(bmp,ImreadModes.Unchanged);
-			ramka.Image=src;
+			Bitmap bimg = new Bitmap(imgFile);
+			ramka.Image=bimg;
 			
 		}
 		
@@ -366,7 +274,7 @@ namespace UyghurOCR
 		{
 			string lang = (string)chkLang.SelectedItem;
 			gOcr= new TesseractEngine(@".\tessdata",lang,EngineMode.LstmOnly);
-			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";			
+			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";
 		}
 	}
 }

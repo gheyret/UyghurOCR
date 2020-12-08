@@ -10,8 +10,6 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
 
 namespace UyghurOCR
 {
@@ -21,11 +19,10 @@ namespace UyghurOCR
 	/// 
 	public partial class ResimRamka : UserControl
 	{
-		public delegate void   dlSeletedImage(Mat org);
+		public delegate void   dlSeletedImage(Bitmap org);
 		public delegate void   dlSelectedArea(int x, int y, int w, int h);
 		public delegate void   dlMousePoint(int x, int y);
 		
-		Mat     org_Mat = null;
 		private Bitmap img_ORG=null;
 		
 		private float _rt=1.0f;
@@ -68,23 +65,22 @@ namespace UyghurOCR
 			//
 		}
 		
-		public Mat Image{
+		public Bitmap Image{
 			set{
 				_selX=-1;
 				_selY=-1;
 				_fW = -1;
 				_fH = -1;
 				if(value!=null){
-					if(org_Mat!=null){
-						org_Mat.Dispose();
+					if(img_ORG!=null){
+						img_ORG.Dispose();
 					}
-					org_Mat = value;
-					img_ORG = org_Mat.ToBitmap();
+					img_ORG = value;
 				}
 				Invalidate();
 			}
 			get{
-				return org_Mat;
+				return img_ORG;
 			}
 		}
 		
@@ -197,7 +193,7 @@ namespace UyghurOCR
 		{
 			if (e.Button == MouseButtons.Left){
 				if(Selected!=null && _fH>0 && _fW>0){
-					Selected(org_Mat[_selY,_selY+_fH,_selX,_selX+_fW]);
+					Selected(img_ORG.Clone(new Rectangle(_selY,_selY+_fH,_selX,_selX+_fW),img_ORG.PixelFormat));
 				}
 				
 				if(SelectedArea!=null && _fH>0 && _fW>0){
@@ -216,8 +212,8 @@ namespace UyghurOCR
 			Invalidate();
 		}
 		
-		public OpenCvSharp.Rect getRoi(){
-			return new Rect(_selX,_selY,_fW,_fH);
+		public Rectangle getRoi(){
+			return new Rectangle(_selX,_selY,_fW,_fH);
 		}
 		
 		void ResimRamkaMouseClick(object sender, MouseEventArgs e)
