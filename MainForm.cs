@@ -106,6 +106,7 @@ namespace UyghurOCR
 		void listAllImg(){
 			string baseName;
 			listBox1.Items.Clear();
+			if(!Directory.Exists(label1.Text)) return;
 			String[] images = Directory.GetFiles(label1.Text,"*.*");
 			foreach(string afile in images){
 				baseName = Path.GetFileName(afile).ToLower();
