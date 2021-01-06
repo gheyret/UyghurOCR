@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using Tesseract;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Threading.Tasks;
 
 namespace UyghurOCR
@@ -25,6 +26,8 @@ namespace UyghurOCR
 		OCRText  gOcrTxtForm = null;
 		private  Microsoft.Win32.RegistryKey     gRegKey= Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Kenjsoft\KenjiResim");
 		
+		static string gImgExts;
+		
 		public MainForm()
 		{
 			//
@@ -34,8 +37,18 @@ namespace UyghurOCR
 			System.Reflection.Assembly asm =System.Reflection.Assembly.GetExecutingAssembly();
 			this.Icon=new Icon(asm.GetManifestResourceStream("UyghurOCR.icon.ico"));
 			
+			var codecs = ImageCodecInfo.GetImageEncoders();
+			foreach (var codec in codecs)
+			{
+				gImgExts += codec.FilenameExtension + ";";
+			}
+			
 		}
 		
+		bool IsImage(string filename)
+		{
+			return gImgExts.IndexOf(Path.GetExtension(filename),StringComparison.OrdinalIgnoreCase) == -1? false:true;
+		}
 		
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -104,13 +117,11 @@ namespace UyghurOCR
 		
 		
 		void listAllImg(){
-			string baseName;
 			listBox1.Items.Clear();
 			if(!Directory.Exists(label1.Text)) return;
 			String[] images = Directory.GetFiles(label1.Text,"*.*");
 			foreach(string afile in images){
-				baseName = Path.GetFileName(afile).ToLower();
-				if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp")||baseName.EndsWith(".jfif")){
+				if(IsImage(afile)){
 					listBox1.Items.Add(Path.GetFileName(afile));
 				}
 			}
@@ -255,8 +266,7 @@ namespace UyghurOCR
 		void MainFormDragEnter(object sender, DragEventArgs e)
 		{
 			String[] file=(String[])e.Data.GetData(DataFormats.FileDrop);
-			String  baseName = Path.GetFileName(file[0]).ToLower();
-			if(baseName.EndsWith(".png") || baseName.EndsWith(".jpg")|| baseName.EndsWith(".jpeg")||baseName.EndsWith(".bmp")||baseName.EndsWith(".jfif"))
+			if(IsImage(file[0]))
 			{
 				e.Effect= DragDropEffects.All;
 			}

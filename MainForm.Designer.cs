@@ -170,6 +170,7 @@ namespace UyghurOCR
 			// 
 			// rdSingle
 			// 
+			this.rdSingle.Checked = true;
 			this.rdSingle.Location = new System.Drawing.Point(6, 58);
 			this.rdSingle.Name = "rdSingle";
 			this.rdSingle.Size = new System.Drawing.Size(141, 24);
@@ -180,12 +181,10 @@ namespace UyghurOCR
 			// 
 			// rdAuto
 			// 
-			this.rdAuto.Checked = true;
 			this.rdAuto.Location = new System.Drawing.Point(6, 28);
 			this.rdAuto.Name = "rdAuto";
 			this.rdAuto.Size = new System.Drawing.Size(141, 24);
 			this.rdAuto.TabIndex = 0;
-			this.rdAuto.TabStop = true;
 			this.rdAuto.Text = "Automatic";
 			this.rdAuto.UseVisualStyleBackColor = true;
 			// 
