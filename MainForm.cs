@@ -9,10 +9,10 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
-using Tesseract;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using Tesseract;
 
 namespace UyghurOCR
 {
