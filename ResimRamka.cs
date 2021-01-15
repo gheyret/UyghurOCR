@@ -186,6 +186,9 @@ namespace UyghurOCR
 				_stSelW=(int)(_fW*_rt);
 				_stSelH=(int)(_fH*_rt);
 			}
+			else{
+				_isBesildi = false;
+			}
 			Invalidate();
 		}
 		
@@ -199,6 +202,7 @@ namespace UyghurOCR
 				if(SelectedArea!=null && _fH>0 && _fW>0){
 					SelectedArea(_selX,_selY, _fW, _fH);
 				}
+				_isBesildi = false;
 			}
 		}
 		
@@ -213,7 +217,13 @@ namespace UyghurOCR
 		}
 		
 		public Rectangle getRoi(){
-			return new Rectangle(_selX,_selY,_fW,_fH);
+			if(_fW!=-1 && _fH!=-1)
+			{
+				return new Rectangle(_selX,_selY,_fW,_fH);
+			}
+			else{
+				return new Rectangle(0,0,img_ORG.Width,img_ORG.Height);
+			}
 		}
 		
 		void ResimRamkaMouseClick(object sender, MouseEventArgs e)
