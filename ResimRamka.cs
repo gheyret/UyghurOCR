@@ -219,7 +219,7 @@ namespace UyghurOCR
 		public Rectangle getRoi(){
 			if(_fW!=-1 && _fH!=-1)
 			{
-				return new Rectangle(_selX,_selY,_fW,_fH);
+			return new Rectangle(_selX,_selY,_fW,_fH);
 			}
 			else{
 				return new Rectangle(0,0,img_ORG.Width,img_ORG.Height);
