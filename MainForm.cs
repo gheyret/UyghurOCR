@@ -35,7 +35,7 @@ namespace UyghurOCR
 			//
 			InitializeComponent();
 			System.Reflection.Assembly asm =System.Reflection.Assembly.GetExecutingAssembly();
-			this.Icon=new Icon(asm.GetManifestResourceStream("UyghurOCR.icon.ico"));
+			this.Icon=new Icon(asm.GetManifestResourceStream("UyghurOCR.OCAq.ico"));
 			
 			var codecs = ImageCodecInfo.GetImageEncoders();
 			foreach (var codec in codecs)
