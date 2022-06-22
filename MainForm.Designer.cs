@@ -37,19 +37,20 @@ namespace UyghurOCR
 		private void InitializeComponent()
 		{
 			this.ramka = new UyghurOCR.ResimRamka();
-			this.buttonRight = new System.Windows.Forms.Button();
-			this.buttonNext = new System.Windows.Forms.Button();
+			this.butRecognize = new System.Windows.Forms.Button();
+			this.butNext = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.butPDF = new System.Windows.Forms.Button();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.rdSingle = new System.Windows.Forms.RadioButton();
 			this.rdAuto = new System.Windows.Forms.RadioButton();
-			this.button2 = new System.Windows.Forms.Button();
+			this.butDeskew = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.chkLang = new System.Windows.Forms.ComboBox();
+			this.butRecAll = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -68,27 +69,27 @@ namespace UyghurOCR
 			this.ramka.Size = new System.Drawing.Size(547, 463);
 			this.ramka.TabIndex = 34;
 			// 
-			// buttonRight
+			// butRecognize
 			// 
-			this.buttonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonRight.Location = new System.Drawing.Point(743, 467);
-			this.buttonRight.Name = "buttonRight";
-			this.buttonRight.Size = new System.Drawing.Size(143, 32);
-			this.buttonRight.TabIndex = 37;
-			this.buttonRight.Text = "Recognize";
-			this.buttonRight.UseVisualStyleBackColor = true;
-			this.buttonRight.Click += new System.EventHandler(this.ButtonRight);
+			this.butRecognize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.butRecognize.Location = new System.Drawing.Point(743, 424);
+			this.butRecognize.Name = "butRecognize";
+			this.butRecognize.Size = new System.Drawing.Size(143, 32);
+			this.butRecognize.TabIndex = 37;
+			this.butRecognize.Text = "Recognize";
+			this.butRecognize.UseVisualStyleBackColor = true;
+			this.butRecognize.Click += new System.EventHandler(this.ButtonRight);
 			// 
-			// buttonNext
+			// butNext
 			// 
-			this.buttonNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonNext.Location = new System.Drawing.Point(743, 505);
-			this.buttonNext.Name = "buttonNext";
-			this.buttonNext.Size = new System.Drawing.Size(143, 32);
-			this.buttonNext.TabIndex = 40;
-			this.buttonNext.Text = "Next";
-			this.buttonNext.UseVisualStyleBackColor = true;
-			this.buttonNext.Click += new System.EventHandler(this.ButtonNextClick);
+			this.butNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.butNext.Location = new System.Drawing.Point(743, 462);
+			this.butNext.Name = "butNext";
+			this.butNext.Size = new System.Drawing.Size(143, 32);
+			this.butNext.TabIndex = 40;
+			this.butNext.Text = "Next";
+			this.butNext.UseVisualStyleBackColor = true;
+			this.butNext.Click += new System.EventHandler(this.ButtonNextClick);
 			// 
 			// label1
 			// 
@@ -135,16 +136,16 @@ namespace UyghurOCR
 			this.listBox1.TabIndex = 0;
 			this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1SelectedIndexChanged);
 			// 
-			// button1
+			// butPDF
 			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.button1.Location = new System.Drawing.Point(0, 505);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(181, 32);
-			this.button1.TabIndex = 43;
-			this.button1.Text = "PDF to Image";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.ButPdftoImageClick);
+			this.butPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.butPDF.Location = new System.Drawing.Point(0, 505);
+			this.butPDF.Name = "butPDF";
+			this.butPDF.Size = new System.Drawing.Size(181, 32);
+			this.butPDF.TabIndex = 43;
+			this.butPDF.Text = "PDF to Image";
+			this.butPDF.UseVisualStyleBackColor = true;
+			this.butPDF.Click += new System.EventHandler(this.ButPdftoImageClick);
 			// 
 			// progressBar1
 			// 
@@ -188,16 +189,16 @@ namespace UyghurOCR
 			this.rdAuto.Text = "Automatic";
 			this.rdAuto.UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// butDeskew
 			// 
-			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.button2.Location = new System.Drawing.Point(743, 429);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(143, 32);
-			this.button2.TabIndex = 46;
-			this.button2.Text = "Deskew";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.Button2Click);
+			this.butDeskew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.butDeskew.Location = new System.Drawing.Point(743, 386);
+			this.butDeskew.Name = "butDeskew";
+			this.butDeskew.Size = new System.Drawing.Size(143, 32);
+			this.butDeskew.TabIndex = 46;
+			this.butDeskew.Text = "Deskew";
+			this.butDeskew.UseVisualStyleBackColor = true;
+			this.butDeskew.Click += new System.EventHandler(this.Button2Click);
 			// 
 			// groupBox2
 			// 
@@ -220,21 +221,33 @@ namespace UyghurOCR
 			this.chkLang.TabIndex = 0;
 			this.chkLang.SelectedIndexChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
 			// 
+			// butRecAll
+			// 
+			this.butRecAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.butRecAll.Location = new System.Drawing.Point(743, 501);
+			this.butRecAll.Name = "butRecAll";
+			this.butRecAll.Size = new System.Drawing.Size(143, 32);
+			this.butRecAll.TabIndex = 48;
+			this.butRecAll.Text = "Recognize All";
+			this.butRecAll.UseVisualStyleBackColor = true;
+			this.butRecAll.Click += new System.EventHandler(this.Button3Click);
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(893, 542);
+			this.Controls.Add(this.butRecAll);
 			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.button2);
+			this.Controls.Add(this.butDeskew);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.progressBar1);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.butPDF);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.buttonNext);
-			this.Controls.Add(this.buttonRight);
+			this.Controls.Add(this.butNext);
+			this.Controls.Add(this.butRecognize);
 			this.Name = "MainForm";
 			this.Text = "Simple Uyghur OCR using Tessract";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
@@ -252,18 +265,19 @@ namespace UyghurOCR
 
 		}
 		private UyghurOCR.ResimRamka ramka;
-		private System.Windows.Forms.Button buttonRight;
-		private System.Windows.Forms.Button buttonNext;
+		private System.Windows.Forms.Button butRecognize;
+		private System.Windows.Forms.Button butNext;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.ListBox listBox1;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button butPDF;
 		private System.Windows.Forms.ProgressBar progressBar1;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button butDeskew;
 		private System.Windows.Forms.RadioButton rdSingle;
 		private System.Windows.Forms.RadioButton rdAuto;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.ComboBox chkLang;
+		private System.Windows.Forms.Button butRecAll;
 	}
 }

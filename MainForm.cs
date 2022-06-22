@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using Tesseract;
+using System.Text;
 
 namespace UyghurOCR
 {
@@ -27,7 +28,7 @@ namespace UyghurOCR
 		private  Microsoft.Win32.RegistryKey     gRegKey= Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Kenjsoft\KenjiResim");
 		
 		static string gImgExts;
-		
+			
 		public MainForm()
 		{
 			//
@@ -60,31 +61,33 @@ namespace UyghurOCR
 		
 		async void ButtonRight(object sender, EventArgs e)
 		{
-			buttonRight.Enabled = false;
-			buttonNext.Enabled = false;
-			button2.Enabled = false;
+			butRecognize.Enabled = false;
+			butNext.Enabled = false;
+			butDeskew.Enabled = false;
 			
 			Bitmap roibmp;
 			Pix    roipix;
 			Rectangle roi = ramka.getRoi();
 			Cursor=Cursors.WaitCursor;
 			roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
-			roipix = PixConverter.ToPix(roibmp);
+			roibmp.SetResolution(400,400);
+			roipix = PixConverter.ToPix(roibmp).Deskew().Scale(4.0f,4.0f);
 			roibmp.Dispose();
 
 			Task<string> ocr = Task.Run<string>(() =>{
 			                                    	return DoOCR(roipix);
 			                                    });
 			string txt = await ocr;
-			System.Diagnostics.Debug.WriteLine(txt);
+
 			if(gOcrTxtForm==null || gOcrTxtForm.IsDisposed){
 				gOcrTxtForm=new OCRText();
 				gOcrTxtForm.Show();
 			}
 			gOcrTxtForm.SetText(txt);
-			buttonRight.Enabled = true;
-			buttonNext.Enabled = true;
-			button2.Enabled = true;
+			
+			butRecognize.Enabled = true;
+			butNext.Enabled = true;
+			butDeskew.Enabled = true;
 			Cursor=Cursors.Default;
 			roipix.Dispose();
 		}
@@ -205,13 +208,13 @@ namespace UyghurOCR
 				Directory.CreateDirectory(path);
 			}
 
-			button1.Enabled=false;
+			butPDF.Enabled=false;
 			this.Cursor=System.Windows.Forms.Cursors.WaitCursor;
 			if(ExtractImage(pdfFile,path)){
 				label1.Text = path;
 				listAllImg();
 			}
-			button1.Enabled=true;
+			butPDF.Enabled=true;
 			this.Cursor=System.Windows.Forms.Cursors.Arrow;
 		}
 		
@@ -227,16 +230,19 @@ namespace UyghurOCR
 				return false;
 			}
 		}
+		
 		void Button2Click(object sender, EventArgs e)
 		{
 			Bitmap roibmp;
 			Pix    roipix;
-			buttonRight.Enabled = false;
-			buttonNext.Enabled = false;
-			button2.Enabled = false;
+			butRecognize.Enabled = false;
+			butNext.Enabled = false;
+			butDeskew.Enabled = false;
 			Rectangle roi = ramka.getRoi();
 			Cursor=Cursors.WaitCursor;
-				roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
+			roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
+//			roibmp.SetResolution(00,400);
+
 			roipix = PixConverter.ToPix(roibmp);
 			roibmp.Dispose();
 			
@@ -245,9 +251,9 @@ namespace UyghurOCR
 			roipix.Dispose();
 			ramka.Image = newbm;
 			Cursor=Cursors.Default;
-			buttonRight.Enabled = true;
-			buttonNext.Enabled = true;
-			button2.Enabled = true;
+			butRecognize.Enabled = true;
+			butNext.Enabled = true;
+			butDeskew.Enabled = true;
 		}
 		
 		void MainFormDragEnter(object sender, DragEventArgs e)
@@ -271,8 +277,78 @@ namespace UyghurOCR
 		void ChkLangSelectedIndexChanged(object sender, EventArgs e)
 		{
 			string lang = (string)chkLang.SelectedItem;
+			if(lang.Equals("ukij")){
+				lang = "ukij+uig";
+			}
 			gOcr= new TesseractEngine(@".\tessdata",lang,EngineMode.LstmOnly);
 			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";
+		}
+		
+		void EnableAll(bool vv){
+			butPDF.Enabled = vv;
+			butDeskew.Enabled = vv;
+			butNext.Enabled = vv;
+			butRecognize.Enabled = vv;
+			label1.Enabled = vv;
+			listBox1.Enabled = vv;
+			groupBox1.Enabled = vv;
+			groupBox2.Enabled = vv;
+			ramka.Enabled = vv;
+		}
+
+		
+		async void Button3Click(object sender, EventArgs e)
+		{
+			if(butRecAll.Text.Equals("Stop")){
+				butRecAll.Enabled=false;
+				butRecAll.Text="Recognize All";
+				return;
+			}
+			listBox1.SelectedIndex = 0;
+			progressBar1.Visible = true;
+			progressBar1.Value = 1;
+			progressBar1.Maximum = listBox1.Items.Count;
+			Bitmap roibmp;
+			Pix    roipix;
+
+			String fileName = Path.Combine(label1.Text, "OCR_Text.txt");
+
+			if(gOcrTxtForm==null || gOcrTxtForm.IsDisposed){
+				gOcrTxtForm=new OCRText();
+				gOcrTxtForm.Show();
+			}
+			gOcrTxtForm.Text = fileName;
+			
+			EnableAll(false);
+
+			Cursor=Cursors.WaitCursor;
+			butRecAll.Text="Stop";
+			while(butRecAll.Text.Equals("Stop")){
+				Rectangle roi = ramka.getRoi();
+				roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
+				roibmp.SetResolution(400,400);				
+				roipix = PixConverter.ToPix(roibmp).Deskew().Scale(4.2f,4.2f);
+				
+				roibmp.Dispose();
+				Task<string> ocr = Task.Run<string>(() =>{
+				                                    	return DoOCR(roipix);
+				                                    });
+				string txt = await ocr;
+				roipix.Dispose();
+				gOcrTxtForm.SetText(txt);
+//				fileName = String.Format("imla_ocr_{0:0000}.txt",listBox1.SelectedIndex);
+				File.AppendAllText(fileName,txt,Encoding.UTF8);				
+				if((listBox1.SelectedIndex+1)>=listBox1.Items.Count){
+					break;
+				}
+				ButtonNextClick(null,null);
+				progressBar1.Value = listBox1.SelectedIndex+1;
+			}
+			progressBar1.Visible = false;
+			Cursor=Cursors.Default;
+			EnableAll(true);
+			butRecAll.Enabled = true;
+			butRecAll.Text="Recognize All";
 		}
 	}
 }
