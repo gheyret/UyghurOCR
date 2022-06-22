@@ -98,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EmbeddedResource Include="icon.ico" />
     <EmbeddedResource Include="OCAq.ico" />
     <None Include="packages.config" />
     <None Include="tessdata\Configs\bazzar">
