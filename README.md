@@ -16,5 +16,7 @@ Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
 Konisi:
 # Download Zipped Executable from here(Körsetme uchurlar In’glizche):
 **1.4 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.4/UyghurOCR.zip
+
 **1.3 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.3/UyghurOCR.zip
+
 **Pikir teleplerni bu yerge yézing.
