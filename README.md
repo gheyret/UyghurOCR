@@ -11,8 +11,8 @@ Eger OCR da xataliq körülse, [ Visual Studio 2019 Runtime](https://support.mic
 # Ozgirishler(2022/08/20)
 Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
 
-# Chüshürüsh:
-**ULY yeziqi neshri(2022/08/20): https://github.com/gheyret/UyghurOCR/releases/download/uly/UyghurOCR.zip**
+*Chüshürüsh:*
+**ULY yéziqi neshri(2022/08/20): https://github.com/gheyret/UyghurOCR/releases/download/uly/UyghurOCR.zip**
 
 # Ékran körünüshi:
 <p>
