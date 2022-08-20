@@ -19,4 +19,4 @@ Konisi:
 
 **1.3 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.3/UyghurOCR.zip
 
-*Pikir teleplerni bu yerge yézing.
+***Pikir teleplerni bu yerge yézing.
