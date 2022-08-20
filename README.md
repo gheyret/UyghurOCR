@@ -4,10 +4,10 @@ Addiy Uyghurche OCR (Tesseract OCR ishlitilgen)
 # Diqqet
 Eger OCR da xataliq körülse, [ Visual Studio 2019 Runtime](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) ni ornitip sinap béqing. chünki Tesseract OCR bu ambargha béqinidiken.
 
-Ozgirishler(2022/08/20)
+# Ozgirishler(2022/08/20)
 Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
 
-Chüshürüsh:
+# Chüshürüsh:
 
 <p>
   <img src="./uocr.png"/>
