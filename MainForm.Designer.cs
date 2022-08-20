@@ -76,7 +76,7 @@ namespace UyghurOCR
 			this.butRecognize.Name = "butRecognize";
 			this.butRecognize.Size = new System.Drawing.Size(143, 32);
 			this.butRecognize.TabIndex = 37;
-			this.butRecognize.Text = "Recognize";
+			this.butRecognize.Text = "Tonu";
 			this.butRecognize.UseVisualStyleBackColor = true;
 			this.butRecognize.Click += new System.EventHandler(this.ButtonRight);
 			// 
@@ -87,7 +87,7 @@ namespace UyghurOCR
 			this.butNext.Name = "butNext";
 			this.butNext.Size = new System.Drawing.Size(143, 32);
 			this.butNext.TabIndex = 40;
-			this.butNext.Text = "Next";
+			this.butNext.Text = "Kéyinkisi";
 			this.butNext.UseVisualStyleBackColor = true;
 			this.butNext.Click += new System.EventHandler(this.ButtonNextClick);
 			// 
@@ -143,7 +143,7 @@ namespace UyghurOCR
 			this.butPDF.Name = "butPDF";
 			this.butPDF.Size = new System.Drawing.Size(181, 32);
 			this.butPDF.TabIndex = 43;
-			this.butPDF.Text = "PDF to Image";
+			this.butPDF.Text = "PDF ni Resimge";
 			this.butPDF.UseVisualStyleBackColor = true;
 			this.butPDF.Click += new System.EventHandler(this.ButPdftoImageClick);
 			// 
@@ -167,7 +167,7 @@ namespace UyghurOCR
 			this.groupBox1.Size = new System.Drawing.Size(153, 117);
 			this.groupBox1.TabIndex = 45;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Segmentation mode";
+			this.groupBox1.Text = "Bet Qurulmisi";
 			// 
 			// rdSingle
 			// 
@@ -177,7 +177,7 @@ namespace UyghurOCR
 			this.rdSingle.Size = new System.Drawing.Size(141, 24);
 			this.rdSingle.TabIndex = 1;
 			this.rdSingle.TabStop = true;
-			this.rdSingle.Text = "Single block";
+			this.rdSingle.Text = "Birla Bölek";
 			this.rdSingle.UseVisualStyleBackColor = true;
 			// 
 			// rdAuto
@@ -186,7 +186,7 @@ namespace UyghurOCR
 			this.rdAuto.Name = "rdAuto";
 			this.rdAuto.Size = new System.Drawing.Size(141, 24);
 			this.rdAuto.TabIndex = 0;
-			this.rdAuto.Text = "Automatic";
+			this.rdAuto.Text = "Özüng Tap";
 			this.rdAuto.UseVisualStyleBackColor = true;
 			// 
 			// butDeskew
@@ -196,7 +196,7 @@ namespace UyghurOCR
 			this.butDeskew.Name = "butDeskew";
 			this.butDeskew.Size = new System.Drawing.Size(143, 32);
 			this.butDeskew.TabIndex = 46;
-			this.butDeskew.Text = "Deskew";
+			this.butDeskew.Text = "Qiysiqni Tüzle";
 			this.butDeskew.UseVisualStyleBackColor = true;
 			this.butDeskew.Click += new System.EventHandler(this.Button2Click);
 			// 
@@ -228,7 +228,7 @@ namespace UyghurOCR
 			this.butRecAll.Name = "butRecAll";
 			this.butRecAll.Size = new System.Drawing.Size(143, 32);
 			this.butRecAll.TabIndex = 48;
-			this.butRecAll.Text = "Recognize All";
+			this.butRecAll.Text = "Hemmini Tonu";
 			this.butRecAll.UseVisualStyleBackColor = true;
 			this.butRecAll.Click += new System.EventHandler(this.Button3Click);
 			// 
@@ -249,7 +249,7 @@ namespace UyghurOCR
 			this.Controls.Add(this.butNext);
 			this.Controls.Add(this.butRecognize);
 			this.Name = "MainForm";
-			this.Text = "Simple Uyghur OCR using Tessract";
+			this.Text = "Addiy Uyghurche OCR";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.Shown += new System.EventHandler(this.MainFormShown);

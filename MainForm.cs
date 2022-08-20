@@ -61,16 +61,13 @@ namespace UyghurOCR
 		
 		async void ButtonRight(object sender, EventArgs e)
 		{
-			butRecognize.Enabled = false;
-			butNext.Enabled = false;
-			butDeskew.Enabled = false;
-			
+			EnableAll(false);
 			Bitmap roibmp;
 			Pix    roipix;
 			Rectangle roi = ramka.getRoi();
 			Cursor=Cursors.WaitCursor;
 			roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
-			roibmp.SetResolution(400,400);
+//			roibmp.SetResolution(400,400);
 			roipix = PixConverter.ToPix(roibmp).Deskew().Scale(4.0f,4.0f);
 			roibmp.Dispose();
 
@@ -78,6 +75,7 @@ namespace UyghurOCR
 			                                    	return DoOCR(roipix);
 			                                    });
 			string txt = await ocr;
+			roipix.Dispose();
 
 			if(gOcrTxtForm==null || gOcrTxtForm.IsDisposed){
 				gOcrTxtForm=new OCRText();
@@ -85,11 +83,8 @@ namespace UyghurOCR
 			}
 			gOcrTxtForm.SetText(txt);
 			
-			butRecognize.Enabled = true;
-			butNext.Enabled = true;
-			butDeskew.Enabled = true;
 			Cursor=Cursors.Default;
-			roipix.Dispose();
+			EnableAll(false);
 		}
 		
 		
@@ -152,7 +147,7 @@ namespace UyghurOCR
 		{
 			FolderBrowserDialog dlg = new FolderBrowserDialog();
 			dlg.SelectedPath = label1.Text;
-			dlg.Description = "Select Image Folder:";
+			dlg.Description = "Resimler bar qisquchni tallang:";
 			dlg.ShowNewFolderButton = false;
 			
 			DialogResult drs = dlg.ShowDialog(this);
@@ -191,7 +186,7 @@ namespace UyghurOCR
 				chkLang.SelectedIndex = ind;
 			}
 			else{
-				MessageBox.Show("No Language Data", "Uyghur OCR",MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Hechqandaq Model yoq iken.", "Uyghurche OCR",MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 		
@@ -208,14 +203,14 @@ namespace UyghurOCR
 				Directory.CreateDirectory(path);
 			}
 
-			butPDF.Enabled=false;
+			EnableAll(false);
 			this.Cursor=System.Windows.Forms.Cursors.WaitCursor;
 			if(ExtractImage(pdfFile,path)){
 				label1.Text = path;
 				listAllImg();
 			}
-			butPDF.Enabled=true;
 			this.Cursor=System.Windows.Forms.Cursors.Arrow;
+			EnableAll(true);
 		}
 		
 		private  bool ExtractImage(String pdfFile, string imgPath)
@@ -235,25 +230,18 @@ namespace UyghurOCR
 		{
 			Bitmap roibmp;
 			Pix    roipix;
-			butRecognize.Enabled = false;
-			butNext.Enabled = false;
-			butDeskew.Enabled = false;
+			EnableAll(false);
 			Rectangle roi = ramka.getRoi();
 			Cursor=Cursors.WaitCursor;
 			roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
-//			roibmp.SetResolution(00,400);
-
-			roipix = PixConverter.ToPix(roibmp);
+			roipix = PixConverter.ToPix(roibmp).Deskew();
 			roibmp.Dispose();
-			
-			Pix roipix1 = roipix.Deskew();
-			Bitmap newbm = PixConverter.ToBitmap(roipix1);
+			System.Diagnostics.Debug.WriteLine(roipix.XRes + " = " + roipix.YRes);
+			Bitmap newbm = PixConverter.ToBitmap(roipix);
 			roipix.Dispose();
 			ramka.Image = newbm;
 			Cursor=Cursors.Default;
-			butRecognize.Enabled = true;
-			butNext.Enabled = true;
-			butDeskew.Enabled = true;
+			EnableAll(true);
 		}
 		
 		void MainFormDragEnter(object sender, DragEventArgs e)
@@ -281,7 +269,7 @@ namespace UyghurOCR
 				lang = "ukij+uig";
 			}
 			gOcr= new TesseractEngine(@".\tessdata",lang,EngineMode.LstmOnly);
-			Text ="Simple Uyghur OCR using Tessract[V" +  gOcr.Version + "]";
+			Text ="Addiy Uyghurche OCR(Tessract OCR[V" +  gOcr.Version + "] Neshri Ishlitilgen)";
 		}
 		
 		void EnableAll(bool vv){
@@ -294,6 +282,8 @@ namespace UyghurOCR
 			groupBox1.Enabled = vv;
 			groupBox2.Enabled = vv;
 			ramka.Enabled = vv;
+			butRecAll.Enabled = vv;
+	
 		}
 
 		
@@ -326,7 +316,6 @@ namespace UyghurOCR
 			while(butRecAll.Text.Equals("Stop")){
 				Rectangle roi = ramka.getRoi();
 				roibmp = ramka.Image.Clone(roi,ramka.Image.PixelFormat);
-				roibmp.SetResolution(400,400);				
 				roipix = PixConverter.ToPix(roibmp).Deskew().Scale(4.2f,4.2f);
 				
 				roibmp.Dispose();
