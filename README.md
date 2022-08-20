@@ -12,6 +12,7 @@ Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
 # Chüshürüsh:
 **ULY yeziqi neshri(2022/08/20): https://github.com/gheyret/UyghurOCR/releases/download/uly/UyghurOCR.zip**
 
+# Ékran körünüshi:
 <p>
   <img src="./uocr.png"/>
 </p>
