@@ -6,8 +6,7 @@ Eger OCR da xataliq körülse, [ Visual Studio 2019 Runtime](https://support.mic
 
 64 bitliq neshriningla ijra höjjitini yasap qoydum. 32 bitliqni esli kodi asasida özingiz hasil qiling.
 
-**Pikir teleplerni bu yerge yézing.**
-**https://github.com/gheyret/UyghurOCR/issues**
+**Pikir teleplerni bu yerge yézing: (https://github.com/gheyret/UyghurOCR/issues)**
 
 # Ozgirishler(2022/08/20)
 Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
