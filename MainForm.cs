@@ -84,7 +84,7 @@ namespace UyghurOCR
 			gOcrTxtForm.SetText(txt);
 			
 			Cursor=Cursors.Default;
-			EnableAll(false);
+			EnableAll(true);
 		}
 		
 		
