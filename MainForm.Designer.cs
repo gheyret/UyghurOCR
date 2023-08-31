@@ -49,7 +49,12 @@ namespace UyghurOCR
 			this.rdAuto = new System.Windows.Forms.RadioButton();
 			this.butDeskew = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.chkLang = new System.Windows.Forms.ComboBox();
+			this.tilRusche = new System.Windows.Forms.CheckBox();
+			this.tilTurkche = new System.Windows.Forms.CheckBox();
+			this.tilEnglizche = new System.Windows.Forms.CheckBox();
+			this.tilXenzuche = new System.Windows.Forms.CheckBox();
+			this.tilUyghurche = new System.Windows.Forms.CheckBox();
+			this.tilUyghurUKIJ = new System.Windows.Forms.CheckBox();
 			this.butRecAll = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -78,7 +83,7 @@ namespace UyghurOCR
 			this.butRecognize.TabIndex = 37;
 			this.butRecognize.Text = "Tonu";
 			this.butRecognize.UseVisualStyleBackColor = true;
-			this.butRecognize.Click += new System.EventHandler(this.ButtonRight);
+			this.butRecognize.Click += new System.EventHandler(this.ButtonTonu);
 			// 
 			// butNext
 			// 
@@ -162,9 +167,9 @@ namespace UyghurOCR
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.rdSingle);
 			this.groupBox1.Controls.Add(this.rdAuto);
-			this.groupBox1.Location = new System.Drawing.Point(738, 89);
+			this.groupBox1.Location = new System.Drawing.Point(738, 232);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(153, 117);
+			this.groupBox1.Size = new System.Drawing.Size(153, 137);
 			this.groupBox1.TabIndex = 45;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Bet Qurulmisi";
@@ -203,23 +208,78 @@ namespace UyghurOCR
 			// groupBox2
 			// 
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox2.Controls.Add(this.chkLang);
+			this.groupBox2.Controls.Add(this.tilRusche);
+			this.groupBox2.Controls.Add(this.tilTurkche);
+			this.groupBox2.Controls.Add(this.tilEnglizche);
+			this.groupBox2.Controls.Add(this.tilXenzuche);
+			this.groupBox2.Controls.Add(this.tilUyghurche);
+			this.groupBox2.Controls.Add(this.tilUyghurUKIJ);
 			this.groupBox2.Location = new System.Drawing.Point(738, 30);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(153, 51);
+			this.groupBox2.Size = new System.Drawing.Size(153, 196);
 			this.groupBox2.TabIndex = 47;
 			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Model";
+			this.groupBox2.Text = "Tillar";
 			// 
-			// chkLang
+			// tilRusche
 			// 
-			this.chkLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.chkLang.FormattingEnabled = true;
-			this.chkLang.Location = new System.Drawing.Point(6, 18);
-			this.chkLang.Name = "chkLang";
-			this.chkLang.Size = new System.Drawing.Size(137, 20);
-			this.chkLang.TabIndex = 0;
-			this.chkLang.SelectedIndexChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			this.tilRusche.Location = new System.Drawing.Point(5, 168);
+			this.tilRusche.Name = "tilRusche";
+			this.tilRusche.Size = new System.Drawing.Size(137, 24);
+			this.tilRusche.TabIndex = 5;
+			this.tilRusche.Text = "Rusche";
+			this.tilRusche.UseVisualStyleBackColor = true;
+			this.tilRusche.CheckedChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			// 
+			// tilTurkche
+			// 
+			this.tilTurkche.Location = new System.Drawing.Point(5, 108);
+			this.tilTurkche.Name = "tilTurkche";
+			this.tilTurkche.Size = new System.Drawing.Size(137, 24);
+			this.tilTurkche.TabIndex = 4;
+			this.tilTurkche.Text = "Turkche";
+			this.tilTurkche.UseVisualStyleBackColor = true;
+			this.tilTurkche.CheckedChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			// 
+			// tilEnglizche
+			// 
+			this.tilEnglizche.Location = new System.Drawing.Point(5, 78);
+			this.tilEnglizche.Name = "tilEnglizche";
+			this.tilEnglizche.Size = new System.Drawing.Size(137, 24);
+			this.tilEnglizche.TabIndex = 3;
+			this.tilEnglizche.Text = "In’glizche";
+			this.tilEnglizche.UseVisualStyleBackColor = true;
+			this.tilEnglizche.CheckedChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			// 
+			// tilXenzuche
+			// 
+			this.tilXenzuche.Location = new System.Drawing.Point(5, 138);
+			this.tilXenzuche.Name = "tilXenzuche";
+			this.tilXenzuche.Size = new System.Drawing.Size(137, 24);
+			this.tilXenzuche.TabIndex = 2;
+			this.tilXenzuche.Text = "Xenzuche";
+			this.tilXenzuche.UseVisualStyleBackColor = true;
+			this.tilXenzuche.CheckedChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			// 
+			// tilUyghurche
+			// 
+			this.tilUyghurche.Location = new System.Drawing.Point(5, 48);
+			this.tilUyghurche.Name = "tilUyghurche";
+			this.tilUyghurche.Size = new System.Drawing.Size(137, 24);
+			this.tilUyghurche.TabIndex = 1;
+			this.tilUyghurche.Text = "Uyghurche";
+			this.tilUyghurche.UseVisualStyleBackColor = true;
+			this.tilUyghurche.CheckedChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
+			// 
+			// tilUyghurUKIJ
+			// 
+			this.tilUyghurUKIJ.Location = new System.Drawing.Point(6, 18);
+			this.tilUyghurUKIJ.Name = "tilUyghurUKIJ";
+			this.tilUyghurUKIJ.Size = new System.Drawing.Size(137, 24);
+			this.tilUyghurUKIJ.TabIndex = 0;
+			this.tilUyghurUKIJ.Text = "Uyghurche(UKIJ)";
+			this.tilUyghurUKIJ.UseVisualStyleBackColor = true;
+			this.tilUyghurUKIJ.CheckedChanged += new System.EventHandler(this.ChkLangSelectedIndexChanged);
 			// 
 			// butRecAll
 			// 
@@ -277,7 +337,12 @@ namespace UyghurOCR
 		private System.Windows.Forms.RadioButton rdSingle;
 		private System.Windows.Forms.RadioButton rdAuto;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.ComboBox chkLang;
 		private System.Windows.Forms.Button butRecAll;
+		private System.Windows.Forms.CheckBox tilRusche;
+		private System.Windows.Forms.CheckBox tilTurkche;
+		private System.Windows.Forms.CheckBox tilEnglizche;
+		private System.Windows.Forms.CheckBox tilXenzuche;
+		private System.Windows.Forms.CheckBox tilUyghurche;
+		private System.Windows.Forms.CheckBox tilUyghurUKIJ;
 	}
 }

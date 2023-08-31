@@ -50,6 +50,12 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>UyghurOCR.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
       <HintPath>packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
@@ -100,6 +106,9 @@
     <None Include="app.config" />
     <EmbeddedResource Include="OCAq.ico" />
     <None Include="packages.config" />
+    <None Include="tessdata\chi_sim.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="tessdata\Configs\bazzar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -119,6 +128,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="tessdata\rus.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\tur.traineddata">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="tessdata\uig.traineddata">
