@@ -11,7 +11,7 @@ Eger OCR da xataliq körülse, [ Visual Studio 2019 Runtime](https://support.mic
 # Özgirishler(2023/08/31)
 Eslidiki Uyghurche modél asasida qaytidin meshiqlendürülüp yéngi modél yasaldi(Uyghurche(UKIJ), ukij.traineddata).
 
-Körünme yüzi özgertildi. (bir nechche tilni birlikte tallash bolidighan qilindi)
+Körünme yüzi özgertildi. (bir nechche tilni birlikte tallighili bolidighan qilindi)
 
 # Özgirishler(2022/08/20)
 Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
