@@ -13,6 +13,10 @@ Eslidiki Uyghurche modél asasida qaytidin meshiqlendürülüp yéngi modél yas
 
 Körünme yüzi özgertildi. (bir nechche tilni birlikte tallighili bolidighan qilindi)
 
+**Chüshürüsh:**
+https://github.com/gheyret/UyghurOCR/releases/download/1.5/UyghurOCR.zip
+
+
 # Özgirishler(2022/08/20)
 Barliq körsetme uchurlar ULY(Uyghur Latin Yéziqi) gha özgertildi.
 
