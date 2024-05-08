@@ -31,7 +31,6 @@ ULY yéziqi neshri(2022/08/20): **https://github.com/gheyret/UyghurOCR/releases/
 
 Konisi:
 # Download Zipped Executable from here(Körsetme uchurlar In’glizche):
-**1.5 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.5/UyghurOCR.zip
 
 **1.4 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.4/UyghurOCR.zip
 
