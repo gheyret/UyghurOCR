@@ -12,9 +12,14 @@ Eger OCR da xataliq körülse, [Microsoft Visual C++ Redistributable packages](h
 
 **Pikir teleplerni bu yerge yézing: (https://github.com/gheyret/UyghurOCR/issues)**
 
-# Détal yarap, i’ane qilishni xalisingiz(WISE arqiliq):
+# I’ane qiling
+** Détal yarap, i’ane qilishni xalisingiz(WISE arqiliq):**
 <p>
   <img src="./kenji.png"/>
+</p>
+** yaki UKIJ ge i’ane qiling **
+<p>
+  <img src="./ukij.png"/>
 </p>
 
 # Özgirishler(2026/01/01)
