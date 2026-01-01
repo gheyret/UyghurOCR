@@ -12,6 +12,11 @@ Eger OCR da xataliq körülse, [Microsoft Visual C++ Redistributable packages](h
 
 **Pikir teleplerni bu yerge yézing: (https://github.com/gheyret/UyghurOCR/issues)**
 
+# Özgirishler(2026/01/01)
+Eslidiki Uyghurche modél asasida qaytidin meshiqlendürülüp yasalghan Uyghurche tonush modéli (ukij.traineddata) ning tonush iqtidari nahayiti yuqiri kötürüldi. bir qisim qol yazmilarda meshiq qildurush arqiliq bezi qol yazmilarnimu tonuydighan boldi.
+
+PDF höjjitini biwasite oqup kireleydighan boldi. burunqidek awwal resimge aylandurushning zörüriyiti qalmidi.
+
 # Özgirishler(2023/08/31)
 Eslidiki Uyghurche modél asasida qaytidin meshiqlendürülüp yéngi modél yasaldi(Uyghurche(UKIJ), ukij.traineddata).
 
