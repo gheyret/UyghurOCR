@@ -15,7 +15,7 @@ Eger OCR da xataliq körülse, [Microsoft Visual C++ Redistributable packages](h
 # I’ane qiling
 ** Détal yarap, i’ane qilishni xalisingiz(WISE arqiliq):**
 <p>
-  <img src="./kenji.png"/>
+  <img src="./kenji.png"/ width="256" height="256">
 </p>
 ** yaki UKIJ ge i’ane qiling **
 <p>
