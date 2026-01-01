@@ -6,7 +6,7 @@ Addiy Uyghurche OCR (Tesseract OCR ishlitilgen)
 **2.0 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/2.0/UyghurOCR.zip
 
 # Diqqet
-Eger OCR da xataliq körülse, [ Visual Studio 2019 Runtime](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) ni ornitip sinap béqing. chünki Tesseract OCR bu ambargha béqinidiken.
+Eger OCR da xataliq körülse, [Microsoft Visual C++ Redistributable packages](https://aka.ms/vs/17/release/vc_redist.x64.exe) ni ornitip sinap béqing. chünki Tesseract OCR bu ambargha béqinidiken.
 
 64 bitliq neshriningla ijra höjjitini yasap qoydum. 32 bitliqni esli kodi asasida özingiz hasil qiling.
 
