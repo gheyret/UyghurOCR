@@ -2,6 +2,7 @@
 Addiy Uyghurche OCR (Tesseract OCR ishlitilgen)
 
 ## Eng yengisini chushurung:
+
 **2.0 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/2.0/UyghurOCR.zip
 
 # Diqqet
