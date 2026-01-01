@@ -1,7 +1,7 @@
 # UyghurOCR
 Addiy Uyghurche OCR (Tesseract OCR ishlitilgen)
 
-## Eng yengisini chushurung:
+## Eng yengisi bu yerde
 
 **2.0 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/2.0/UyghurOCR.zip
 
@@ -13,14 +13,9 @@ Eger OCR da xataliq körülse, [Microsoft Visual C++ Redistributable packages](h
 **Pikir teleplerni bu yerge yézing: (https://github.com/gheyret/UyghurOCR/issues)**
 
 # I’ane qiling
-**Détal yarap, i’ane qilishni xalisingiz(WISE arqiliq):**
+**Détal yarap, i’ane qilishni xalisingiz(WISE arqiliq) töwendiki QR kodini scan qiling.**
 <p>
   <img src="./kenji.png"/ width="256" height="256">
-</p>
-
-**Yaki UKIJ ge i’ane qiling**
-<p>
-  <img src="./ukij.png"/>
 </p>
 
 # Özgirishler(2026/01/01)
