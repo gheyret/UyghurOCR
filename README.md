@@ -26,15 +26,19 @@ PDF höjjitini biwasite oqup kireleydighan boldi. burunqidek awwal resimge aylan
 **UyghurcheOCR diki bet qurulmisi tallash heqqide:**
 
 **1. Özüng tap**
+
 Bet qurulmisi heqqide chüshenchige ige bolmighan ehwal astida buni tallang. yene bettiki mezmunlar ikki yaki uch ston yaki bashqa alahide qurulmiliq bet bolghanda buni tallisingiz bolidu
 
 **2. Birla bölek**
+
 Bette ston dégendek nersiler bolmighan ehwalda, buni tallisingiz toghriliqi "özüng tap" qa qarighanda sel yaxshi bolidu. bu birla stonluq betlerge bekmu mas kélidu.
 
 **3.Qur**
+
 Birla stonluq bet bolsa, waqit köprek ketsimu, toghra bolsun désingiz buni tallisingiz bolidu.
 
 **Tallap tonutush:**
+
 Ékranda körün’gen betning melum da’irisini chashqinekte tallighili bolidu. tonutqanda mushu da’irinila tonuydu.
 
 
