@@ -72,3 +72,13 @@ Konisi:
 **1.4 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.4/UyghurOCR.zip
 
 **1.3 neshiri**: https://github.com/gheyret/UyghurOCR/releases/download/1.3/UyghurOCR.zip
+
+
+# Paydilanmilar
+
+Eng yéngi neshride, qurlarni tépip chiqidighan’gha 
+
+https://github.com/kotaro-kinoshita/yomitoku
+
+ning modéli ishlitildi
+
