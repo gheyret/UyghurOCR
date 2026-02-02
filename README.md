@@ -10,6 +10,8 @@ Eger OCR da xataliq körülse, [Microsoft Visual C++ Redistributable packages](h
 
 64 bitliq neshriningla ijra höjjitini yasap qoydum. 32 bitliqni esli kodi asasida özingiz hasil qiling.
 
+modél.onnx höjjiti bek chong bolghacqa https://github.com/gheyret/UyghurOCR/releases/download/2.0/modél.onnx ge yollandi. esli kodtin paydilinidighan chaghda bu yerdin chüshürüp ishliting.
+
 **Pikir teleplerni bu yerge yézing: (https://github.com/gheyret/UyghurOCR/issues)**
 
 # I’ane qiling
